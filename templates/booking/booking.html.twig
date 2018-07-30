@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Reservierung{% endblock %}
+
+{% block breadcrumb %}
+
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="container">
+
+        <h1>Reservierung</h1>
+
+
+        <ul class="js-pagination u-carousel-indicators-v30 g-pos-abs g-top-0">
+            <li class="{% if workflow_has_marked_place(bookingContainer, 'step1') %}slick-active{% endif %}">
+
+                <a href="{{ path('booking',{ 'force_step' : 'step1' }) }}">
+                    <i class="u-dot-line-v1 g-brd-gray-light-v2--before g-brd-gray-light-v2--after g-mb-15--sm">
+                        <span class="u-dot-line-v1__inner g-bg-white g-bg-primary--before g-brd-gray-light-v2 g-brd-primary--hover g-brd-primary--active g-transition--ease-in g-transition-0_2"></span>
+                    </i>
+                    <span class="g-hidden-sm-down g-color-black g-font-size-15">Teilnehmerangaben</span>
+                </a>
+
+            </li>
+            <li class="{% if workflow_has_marked_place(bookingContainer, 'step2') %}slick-active{% endif %} {% if 'step2' not in availablePlaces %}disabled{% endif %}">
+
+                <a href="{% if 'step2' in availablePlaces %}{{ path('booking',{ 'force_step' : 'step2' }) }}{% else %}#{% endif %}">
+                    <i class="u-dot-line-v1 g-brd-gray-light-v2--before g-brd-gray-light-v2--after g-mb-15--sm">
+                        <span class="u-dot-line-v1__inner g-bg-white g-bg-primary--before g-brd-gray-light-v2 g-brd-primary--hover g-brd-primary--active g-transition--ease-in g-transition-0_2"></span>
+                    </i>
+                    <span class="g-hidden-sm-down g-color-black g-font-size-15  ">Rechnungsdaten</span>
+                </a>
+            </li>
+            <li class="{% if workflow_has_marked_place(bookingContainer, 'step3') %}slick-active{% endif %} {% if 'step3' not in availablePlaces %}disabled{% endif %}">
+                <a href="{% if 'step3' in availablePlaces %}{{ path('booking',{ 'force_step' : 'step3' }) }}{% else %}#{% endif %}">
+                    <i class="u-dot-line-v1 g-brd-gray-light-v2--before g-brd-gray-light-v2--after g-mb-15--sm">
+                        <span class="u-dot-line-v1__inner g-bg-white g-bg-primary--before g-brd-gray-light-v2 g-brd-primary--hover g-brd-primary--active g-transition--ease-in g-transition-0_2"></span>
+                    </i>
+                    <span class="g-hidden-sm-down g-color-black g-font-size-15">Überprüfung</span>
+                </a>
+            </li>
+            <li class="{% if workflow_has_marked_place(bookingContainer, 'confirm') %}slick-active{% endif %}">
+
+                <i class="u-dot-line-v1 g-brd-gray-light-v2--before g-brd-gray-light-v2--after g-mb-15--sm">
+                    <span class="u-dot-line-v1__inner g-bg-white g-bg-primary--before g-brd-gray-light-v2 g-brd-primary--hover g-brd-primary--active g-transition--ease-in g-transition-0_2"></span>
+                </i>
+                <span class="g-hidden-sm-down g-color-black g-font-size-15 ">Reservierung
+                    abgeschlossen</span>
+
+            </li>
+        </ul>
+
+
+        {% if workflow_has_marked_place(bookingContainer, 'step1') %}
+
+            {{ include('booking/_step1.html.twig', {  }) }}
+
+        {% endif %}
+        {% if workflow_has_marked_place(bookingContainer, 'step2') %}
+
+            {{ include('booking/_step2.html.twig', {  }) }}
+
+        {% endif %}
+        {% if workflow_has_marked_place(bookingContainer, 'step3') %}
+
+            {{ include('booking/_step3.html.twig', { }) }}
+
+        {% endif %}
+        {% if workflow_has_marked_place(bookingContainer, 'confirm') %}
+
+
+        {% endif %}
+
+
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,11 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="MoreThanThreeArgumentsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="limit" value="7" />
+    </inspection_tool>
+    <inspection_tool class="PhpTooManyParametersInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="limit" value="10" />
+    </inspection_tool>
+  </profile>
+</component>

@@ -1,0 +1,90 @@
+
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+
+{{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+
+<div class="card mb-4">
+    <div class="card-body">
+
+
+
+    </div>
+</div>
+
+
+<h3 class="mb-4">Überprüfung Ihrer Angaben</h3>
+
+    <div class="form-total mb-4">
+{% for participant in booking.participants %}
+        <div class="bg-gray p-3 form-total__row-participant">
+            <div class="row">
+                <div class="col-12 col-md-4">
+                    <b>{{ seminar.title }}<br />{{ date.startsAt|localizeddate('medium', 'none', app.request.locale) }} - {{ date.endsAt|localizeddate('medium', 'none', app.request.locale) }} | {{ date.location }}</b>
+                </div>
+                <div class="col-12 col-md-4">
+                    {{ participant.firstName }} {{ participant.lastName }}<br />
+                    {{ participant.email }}
+                </div>
+                <div class="col-12 col-md-4 text-right">
+                    <b>{{ date.price|localizedcurrency('EUR') }}</b>
+                </div>
+            </div>
+        </div>
+{% endfor %}
+        <div class="bg-gray p-3 text-right">
+            <div class="form-total-subtotal">
+                <b>Zwischensumme: {{ date.subtotal(numParticipants)|localizedcurrency('EUR') }}</b>
+            </div>
+            <div class="form-total-vat">
+                <b>MwSt.: {{ date.vat(numParticipants)|localizedcurrency('EUR') }}</b>
+            </div>
+            <div class="form-total-vat">
+                <b>Summe: {{ date.total(numParticipants)|localizedcurrency('EUR') }}</b>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="card">
+        {{- form_widget(form.dummy) -}}
+        <div class="card-body">
+            <div class="mb-2">
+                {{- form_widget(form.acceptTermsAndConditions) -}}
+            </div>
+
+            <div class="">
+                {{- form_widget(form.acceptDataProcessing) -}}
+            </div>
+        </div>
+    </div>
+
+
+<hr />
+
+<h3><i class="fas fa-user"></i> Ansprechpartner für die Reservierung</h3>
+
+<div class="row">
+    <div class="col-12 col-md-6">
+        <p>Der Seminaranbieter wird Kontakt aufnehmen, um die verbindliche Buchung vorzunehmen</p>
+        <p>Währender Bearbeitung Ihrer Reservierungsanfrage bleiben Sie der zentrale Ansprechpartner bei Rückfragen vom Seminaranbieter.</p>
+    </div>
+    <div class="col-12 col-md-6">
+
+    </div>
+</div>
+
+<h3><i class="fas fa-user"></i> Ansprechpartner für die Seminarorganisation</h3>
+
+<p>Sofern die Buchung vom Seminaranbieter erfolgreich abgeschlossen wird, informiert dieser die oben genannten Teilnehmer zeitgerecht über organisatorisch relevante Informationen zum verbindlich gebuchten Angebot.</p>
+
+<h3><i class="fas fa-user"></i> Ansprechpartner für die Rechnung</h3>
+
+<p></p>
+
+<hr />
+
+<button class="btn btn-primary" type="submit">Reservierung absenden</button>
+
+{{ form_end(form) }}
