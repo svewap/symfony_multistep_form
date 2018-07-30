@@ -8,9 +8,16 @@
         {% block stylesheets %}{% endblock %}
 
         <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     </head>
     <body>
+        <div class="pt-4 pb-4">
         {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
+
+        <script type="text/javascript" src="{{ asset('assets/js/jquery-3.3.1.min.js') }}" ></script>
+        <script type="text/javascript" src="{{ asset('assets/js/bootstrap.js') }}" ></script>
+        <script type="text/javascript" src="{{ asset('assets/js/frontend.js') }}" ></script>
     </body>
 </html>

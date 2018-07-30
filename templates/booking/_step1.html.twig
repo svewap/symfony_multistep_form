@@ -3,20 +3,13 @@
 
 {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
 
-<div class="card mb-4">
-    <div class="card-body">
-
-
-    </div>
-</div>
-
 
 <h3>Teilnehmer</h3>
 
 
 {{ form_errors(form) }}
 
-<ul class="list-unstyled participants-form participants mb-3" data-prototype="{{ form_widget(form.participants.vars.prototype)|e('html_attr') }}">
+<ul class="list-unstyled participants-form participants o-h mb-3" data-prototype="{{ form_widget(form.participants.vars.prototype)|e('html_attr') }}">
 
         {# iterate over each existing tag and render its only field: name #}
         {% for participant in form.participants %}
@@ -35,7 +28,7 @@
 
 <div class="clearfix">
 
-    <button class="btn float-right" type="submit">Weiter</button>
+    <button class="btn btn-success float-right" type="submit">Weiter</button>
 
 </div>
 

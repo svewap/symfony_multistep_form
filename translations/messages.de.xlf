@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+	<file source-language="en" datatype="plaintext" original="file.ext">
+		<body>
+			<trans-unit id="housenumber">
+				<source>Housenumber</source>
+				<target>Hausnummer</target>
+			</trans-unit>
+			<trans-unit id="street">
+				<source>Street</source>
+				<target>Straße</target>
+			</trans-unit>
+			<trans-unit id="department">
+				<source>Department</source>
+				<target>Abteilung</target>
+			</trans-unit>
+			<trans-unit id="zipcode">
+				<source>Zipcode</source>
+				<target>Postleitzahl</target>
+			</trans-unit>
+			<trans-unit id="last_name">
+				<source>Last name</source>
+				<target>Nachname</target>
+			</trans-unit>
+			<trans-unit id="first_name">
+				<source>First name</source>
+				<target>Vorname</target>
+			</trans-unit>
+			<trans-unit id="email">
+				<source>Email</source>
+				<target>E-Mail-Adresse</target>
+			</trans-unit>
+			<trans-unit id="company">
+				<source>Company</source>
+				<target>Firma</target>
+			</trans-unit>
+			<trans-unit id="country">
+				<source>Country</source>
+				<target>Land</target>
+			</trans-unit>
+			<trans-unit id="telephone">
+				<source>Telephone</source>
+				<target>Telefon</target>
+			</trans-unit>
+			<trans-unit id="vat">
+				<source>Vat</source>
+				<target>Umsatzsteuer-ID</target>
+			</trans-unit>
+			<trans-unit id="form_participant">
+				<source>You must specify at least one participant</source>
+				<target>Bitte geben Sie mindestens einen Teilnehmer an</target>
+			</trans-unit>
+			<trans-unit id="acceptTermsAndConditions">
+				<source>Accept terms and conditions</source>
+				<target>Ich akzeptieren die AGB der Website und informiere mich selbstständig über die AGB des Seminaranbieters.</target>
+			</trans-unit>
+			<trans-unit id="acceptDataProcessing">
+				<source>Accept data processing</source>
+				<target>Mit dem Absenden dieses Formulars erklären Sie sich damit einverstanden, dass Ihre Kontaktinformationen und Ihre
+					Reservierung zwecks weiterverarbeitung Ihrer Anfrage an den Seminaranbieter geschickt werden. Eine verbindliche Buchung
+					erfolgt erst nach Bestätigung durch den Seminaranbieter.</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
