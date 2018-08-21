@@ -36,6 +36,9 @@ class BookingController extends Controller
         }
 
 
+        $entityManager = $this->getDoctrine()->getManager();
+
+
         /** @var Booking $booking */
         $booking = $session->get('booking', new Booking());
         if ($booking === null) {
@@ -48,7 +51,7 @@ class BookingController extends Controller
         $form = null;
 
         $forms = [
-            'step1' => ['class' => ParticipantsType::class, 'data' => $booking, 'options' => []],
+            'step1' => ['class' => ParticipantsType::class, 'data' => $booking, 'options' => ['entityManager' => $entityManager]],
             'step2' => ['class' => InvoiceDataType::class, 'data' => $booking, 'options' => []],
             'step3' => ['class' => LegalnoticeType::class, 'data' => [], 'options' => []],
         ];
@@ -76,7 +79,6 @@ class BookingController extends Controller
             $availablePlaces[] = 'confirmed';
         } catch (LogicException $e) {
         }
-        //dump($availablePlaces);
 
         // set step if available
 
@@ -114,18 +116,18 @@ class BookingController extends Controller
             }
 
             if ($form->isSubmitted() && $form->isValid()) {
-                //dump("valid!");
 
                 if ($bookingContainer->currentPlace === 'step3') {
 
                     // fertig
+                    /*
                     $entityManager = $this->getDoctrine()->getManager();
                     $entityManager->persist($booking);
                     $entityManager->flush();
-
-                    //dump($booking);
+                    */
 
                     // Mail an Bucher
+                    /*
                     $message = (new \Swift_Message('Ihre Buchungsbestätigung'))
                         ->setFrom($this->getParameter('mail.from'))
                         ->setTo($booking->getEmail())
@@ -139,13 +141,13 @@ class BookingController extends Controller
                     ;
 
                     $mailer->send($message);
+                    */
 
 
-                    //exit();
                     // session
-                    //$session->set('booking', null);
+                    $session->set('booking', null);
 
-                    //return $this->redirectToRoute('book_completed');
+                    return $this->redirectToRoute('book_completed');
 
                 }
 

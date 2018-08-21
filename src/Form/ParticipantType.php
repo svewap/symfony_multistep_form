@@ -48,5 +48,6 @@ class ParticipantType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => Participant::class,
         ));
+        $resolver->setRequired('entityManager');
     }
 }

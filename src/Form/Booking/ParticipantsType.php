@@ -18,7 +18,7 @@ class ParticipantsType extends AbstractType
         $builder
             ->add('participants', CollectionType::class, [
                 'entry_type' => ParticipantType::class,
-                'entry_options' => ['label' => false],
+                'entry_options' => ['label' => false, 'entityManager' => $options['entityManager']],
                 'allow_add' => true,
                 'allow_delete' => true,
                 'label' => false,
@@ -40,5 +40,6 @@ class ParticipantsType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Booking::class,
         ]);
+        $resolver->setRequired('entityManager');
     }
 }

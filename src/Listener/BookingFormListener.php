@@ -1,9 +1,8 @@
 <?php
 namespace App\Listener;
 
-use App\Entity\Container\BookingContainer;
+use App\Entity\BookingContainer;
 use App\Form\Extension\Validator\ValidatorExtension;
-use App\Form\Form;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
@@ -17,15 +16,16 @@ class BookingFormListener implements EventSubscriberInterface
 
     public function validateForm(GuardEvent $event)
     {
+
         /** @var BookingContainer $bookingContainer */
         $bookingContainer = $event->getSubject();
 
+        dump("validateForm for ".$bookingContainer->currentPlace);
+
 
         $forms = $bookingContainer->forms;
-        $booking = $bookingContainer->booking;
 
         $formDef = $forms[$bookingContainer->currentPlace];
-        //$formDef['options']['disabled'] = true;
 
         $validator = Validation::createValidator();
 
@@ -39,25 +39,19 @@ class BookingFormListener implements EventSubscriberInterface
 
 
 
-        //dump("fake submit for form ".$form->getName());
-        //dump($values);
-        //$form->submit([],false);
+        dump("fake submit for form ".$form->getName());
+        //$form->submit([],false);  // Leider nicht möglich
         $this->validateWithoutSubmit($form);
-
-
-
-        //dump('validate '.$bookingContainer->currentPlace);
-        //dump($form);
 
 
         $errors = $form->getErrors(true);
         // Validator auf Fehler abfragen
         if (\count($errors) > 0) {
-            //dump($bookingContainer->currentPlace." blocked");
+            dump($bookingContainer->currentPlace." blocked");
             //dump($errors);
             $event->setBlocked(true);
         } else {
-            //dump($bookingContainer->currentPlace." not blocked");
+            dump($bookingContainer->currentPlace." not blocked");
         }
 
         //$event->setBlocked(true);

@@ -27,6 +27,7 @@ class InvoiceDataType extends AbstractType
             ]])
             ->add('department', TextType::class, ['constraints' => [
             ]])
+            /*
             ->add('telephone', TextType::class, ['constraints' => [
                 new NotBlank()
             ]])
@@ -48,7 +49,7 @@ class InvoiceDataType extends AbstractType
             ]])
             ->add('vat', TextType::class, ['constraints' => [
                 new NotBlank()
-            ]])
+            ]])*/
         ;
 
         /** @var FormBuilderInterface $element */
